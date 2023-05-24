@@ -89,7 +89,7 @@ async function main() {
         });
 
         // Wait for duration on page
-        await page.waitForTimeout(10 * 1000)
+        await page.waitForTimeout(20 * 1000)
 
         await page._client.send('Emulation.clearDeviceMetricsOverride')
 
@@ -101,7 +101,7 @@ async function main() {
         await page.setBypassCSP(true)
 
         // Check if recording exists (search "404" message)
-        await page.waitForTimeout(10 * 1000)
+        await page.waitForTimeout(20 * 1000)
 
         try {
             const loadMsg = await page.$eval('.error-code', el => el.textContent);
@@ -115,7 +115,7 @@ async function main() {
         }
 
         // Wait for duration on page
-        await page.waitForTimeout(10 * 1000)
+        await page.waitForTimeout(20 * 1000)
         // Get recording duration
         duration = await page.evaluate(() => {
             return document.getElementById("vjs_video_3_html5_api").duration
