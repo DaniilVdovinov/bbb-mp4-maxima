@@ -33,7 +33,7 @@ RUN apt-get install --yes nodejs
 COPY *.sh ./
 COPY *.js ./
 COPY *.json ./
-COPY .env ./
+COPY env-example env
 
 RUN mkdir download
 

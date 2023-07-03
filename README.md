@@ -1,6 +1,17 @@
 # bbb-mp4
 Easily integrate this app into your BigBlueButton server to automatically convert class recordings into MP4 videos.
 
+## Push to docker hub
+
+Build
+```shell
+docker build --platform=linux/amd64 -t danilka1337/bbb-mp4:v0.1.FHD .
+```
+
+Push
+```shell
+docker push danilka1337/bbb-mp4:v0.1.FHD
+```
 
 ## How it works?
 
