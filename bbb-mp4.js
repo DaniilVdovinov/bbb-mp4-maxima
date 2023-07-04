@@ -126,8 +126,17 @@ async function main() {
         await page.$eval('.bottom-content', element => element.style.display = "none");
         await page.$eval('.fullscreen-button', element => element.style.opacity = "0");
         await page.$eval('.right', element => element.style.opacity = "0");
-        await page.$eval('.vjs-control-bar', element => element.style.opacity = "0");
         await page.click('button[class=vjs-big-play-button]', {waitUntil: 'domcontentloaded'});
+
+        await page.waitForTimeout(200)
+        await page.click('button[class=vjs-playing]', {waitUntil: 'domcontentloaded'});
+        await page.click('button[class=skip-back]', {waitUntil: 'domcontentloaded'});
+
+        await page.waitForTimeout(5 * 1000)
+        await page.click('button[class=vjs-paused]', {waitUntil: 'domcontentloaded'});
+        await page.$eval('.vjs-control-bar', element => element.style.opacity = "0");
+
+        page.waitForSelector('div#vjs_video_3.vjs-playing');
 
         //  Start capturing screen with ffmpeg
         const ls = child_process.spawn('sh', ['ffmpeg-cmd.sh', ' ',
