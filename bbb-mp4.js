@@ -96,7 +96,8 @@ async function main() {
         // Catch URL unreachable error
         await page.goto(url, {waitUntil: 'networkidle2'}).catch(e => {
             console.error('Recording URL unreachable!');
-            process.exit(2);
+            console.error(url);
+            throw 'Url Error';
         })
         await page.setBypassCSP(true)
 
